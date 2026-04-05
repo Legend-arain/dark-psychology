@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindForge - Unlock the Psychology of Winning</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Creepster&family=Orbitron:wght@400;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', monospace;
+            background: linear-gradient(135deg, #000000 0%, #0f0000 50%, #1a0000 100%);
+            color: #cc3333;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        .cursor {
+            position: fixed;
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(circle, #cc3333, #990000);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            box-shadow: 0 0 15px rgba(204,51,51,0.6);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 2px solid #cc3333;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Creepster', cursive;
+            font-size: 2rem;
+            color: #cc3333;
+            text-shadow: 0 0 15px rgba(204,51,51,0.5);
+            letter-spacing: 3px;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #cc3333, #aa2222);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(204,51,51,0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(204,51,51,0.5);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(204,51,51,0.6);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        section {
+            padding: 100px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #cc3333, #aa2222);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: rgba(204,51,51,0.08);
+            border: 2px solid rgba(204,51,51,0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #cc3333;
+            box-shadow: 0 20px 40px rgba(204,51,51,0.25);
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #cc3333;
+        }
+
+        .warning {
+            background: rgba(204,51,51,0.15);
+            border: 1px solid rgba(204,51,51,0.4);
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-weight: bold;
+        }
+
+        .progress-container {
+            background: rgba(0,0,0,0.5);
+            height: 6px;
+            border-radius: 3px;
+            margin: 2rem 0;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #cc3333, #aa2222);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(204,51,51,0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .contact-card h3 {
+            color: #cc3333;
+            margin-bottom: 1rem;
+        }
+
+        .buy-section {
+            background: rgba(204,51,51,0.1);
+            border: 3px solid rgba(204,51,51,0.4);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 700px;
+            margin: 3rem auto;
+            text-align: center;
+        }
+
+        footer {
+            background: rgba(0,0,0,0.95);
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 2px solid #cc3333;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .cards-grid, .contact-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor" id="cursor"></div>
+    
+    <header>
+        <nav>
+            <div class="logo">🧠 MIND FORGE</div>
+            <button class="cta-button" onclick="scrollToSection('buy')">GET THE EDGE NOW</button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Master the Hidden Psychology of DOMINATION</h1>
+        <p id="hero-text">Your mind is your greatest weapon. Weaponize it to control conversations, close deals effortlessly, and build unstoppable momentum in any situation. The techniques you're about to discover have been hidden from the public for decades. Most people never learn these because they're too powerful.</p>
+        <button class="cta-button" style="font-size: 1.3rem; padding: 15px 40px;" onclick="scrollToSection('buy')">UNLOCK YOUR MIND NOW</button>
+    </section>
+
+    <section id="psychology">
+        <h2>Weaponized Psychology Secrets</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <h3>🔥 The Scarcity Trigger</h3>
+                <p>Why people buy when they're AFRAID of missing out. This 3-second psychological hack creates instant urgency and closes 80% more sales. Most people never learn this because it's too powerful.</p>
+                <p><strong>Real Result:</strong> One client used this to triple their conversion rate in 7 days.</p>
+                <div class="warning">⚠️ Warning: This creates addictive buying behavior. Test on low-value offers first.</div>
+            </div>
+            
+            <div class="card">
+                <h3>🧠 Authority Halo Effect</h3>
+                <p>Make people obey you without question using these exact 7 phrases that trigger instant compliance. Works in sales calls, negotiations, and even casual conversations.</p>
+                <p><strong>Science:</strong> Backed by 40+ years of psychological research from Cialdini and Kahneman.</p>
+                <div class="warning">⚠️ Warning: Bypasses rational thinking. Use ethically and responsibly.</div>
+            </div>
+            
+            <div class="card">
+                <h3>💎 Loss Aversion Mastery</h3>
+                <p>People fear loss 2.6x more than they desire gain. This reframing technique makes "No" impossible and turns objections into instant yeses.</p>
+                <p><strong>Proven:</strong> Used by top 1% negotiators worldwide.</p>
+                <div class="warning">⚠️ Warning: Creates extreme urgency. Monitor emotional responses carefully.</div>
+            </div>
+            
+            <div class="card">
+                <h3>⚡ Anchoring Power</h3>
+                <p>The first number you hear becomes the mental benchmark. Set impossible high anchors then close at your real price. This single technique doubles perceived value instantly.</p>
+                <div class="warning">⚠️ Warning: Can distort price perception permanently.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-upgrade" style="background: rgba(0,0,0,0.3);">
+        <h2>Why Your Current Approach Is Failing</h2>
+        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+            <p style="font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.9; line-height: 1.8;">
+                You're leaving massive potential on the table because you're using outdated, amateur techniques. 87% of salespeople never break through the income ceiling because they ignore these core psychological principles.
+            </p>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.85;">
+                The top 1% don't work harder - they work <strong>smarter</strong> using weaponized psychology that controls decisions at a subconscious level.
+            </p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress"></div>
+            </div>
+            <p style="font-size: 1.2rem; margin-top: 1rem;">
+                <strong>Your Current Performance: <span id="perf">13%</span></strong>
+            </p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>📱 Phone</h3>
+                <p><strong>+1 (555) 777-1337</strong></p>
+                <p>Mon-Fri: 9AM-8PM EST</p>
+                <p>Response within 60 seconds</p>
+            </div>
+            <div class="contact-card">
+                <h3>✉️ Email</h3>
+                <p><strong>support@mindforge.ai</strong></p>
+                <p>Instant auto-reply + human response within 2 hours</p>
+            </div>
+            <div class="contact-card">
+                <h3>💬 Live Chat</h3>
+                <p>24/7 AI Assistant</p>
+                <p>Bottom right corner</p>
+                <p>Average wait: 3 seconds</p>
+            </div>
+            <div class="contact-card">
+                <h3>📍 Location</h3>
+                <p>MindForge HQ</p>
+                <p>New York, NY 10001</p>
+                <p>By appointment only</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="buy">
+        <h2>Get the Complete MindForge System</h2>
+        <div class="buy-section">
+            <h3 style="font-size: 2.5rem; margin-bottom: 1rem; color: #cc3333;">LIMITED ACCESS</h3>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">Lifetime access • Instant download • 100% results guaranteed</p>
+            <div class="warning" style="margin-bottom: 2rem;">
+                ⚠️ <strong>LIMITED: Only 17 spots left</strong> (Closes in 24 hours)
+            </div>
+            <button class="cta-button" style="font-size: 1.5rem; padding: 20px 50px;" onclick="purchase()">
+                SECURE YOUR EDGE NOW
+            </button>
+        </div>
+        <div style="margin-top: 2rem; opacity: 0.7; font-size: 0.9rem; text-align: center;">
+            💳 Secure Checkout • Instant Access • 30-Day Guarantee
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 MindForge. Weaponize your mind. Dominate your market.</p>
+            <p style="margin-top: 1rem; opacity: 0.7;">support@mindforge.ai | +1 (555) 777-1337</p>
+        </div>
+    </footer>
+
+    <script>
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function purchase() {
+            alert('🎉 Access Granted! Check your email for instant delivery.\n\nYour transformation begins NOW.');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 87;
+            document.getElementById('progress').style.width = scrolled + '%';
+            document.getElementById('perf').textContent = Math.round(scrolled) + '%';
+        });
+    </script>
+</body>
+</html>
